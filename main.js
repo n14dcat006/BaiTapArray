@@ -122,7 +122,28 @@ function findLastEvenNumber() {
 }
 
 // 6. Đổi chỗ 2 vị trí
-function swapPositions() {}
+/**
+ * input:
+ * mảng: các số
+ * vị trí 1
+ * vị trí 2
+ *
+ * xử lý:
+ * tạo 1 biến giá trị tạm = giá trị biến 1
+ * gán mảng[vị trí 1]= giá trị mảng[vị trí 2]
+ * gán lại mảng[vị trí 2] = giá trị biến tạm lúc nãy
+ *
+ * output:
+ * mảng sau khi đổi chỗ
+ */
+function swapPositions() {
+  let position1 = document.getElementById("inputPosition1").value * 1;
+  let position2 = document.getElementById("inputPosition2").value * 1;
+  let tempValue = numberList[position1];
+  numberList[position1] = numberList[position2];
+  numberList[position2] = tempValue;
+  document.getElementById("result6").innerHTML = `👉 ${numberList}`;
+}
 
 // 7. Sắp xếp tăng dần
 function sortAscending() {}
