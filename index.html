@@ -1,11 +1,483 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Bài tập Mảng - JS Buổi 7-8</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Flowbite CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
+  <body class="bg-gray-100 min-h-screen">
+    <main class="max-w-4xl mx-auto px-4 py-8 space-y-6">
+      <!-- NHẬP MẢNG -->
+      <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">
+          Nhập mảng số nguyên
+        </h2>
+        <form
+          id="formAddNumber"
+          class="flex flex-col sm:flex-row gap-3"
+          onsubmit="return false;"
+        >
+          <input
+            type="number"
+            id="inputNumber"
+            placeholder="Nhập số n"
+            class="flex-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+          />
+          <button
+            type="submit"
+            id="btnAddNumber"
+            onclick="addNumber()"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+          >
+            Thêm số
+          </button>
+        </form>
+        <div class="mt-4 p-4 text-sm text-blue-800 rounded-lg bg-blue-50">
+          👉 Mảng hiện tại:
+          <span id="arrayResult" class="font-semibold">[]</span>
+        </div>
+      </section>
+
+      <!-- 10 BÀI TẬP -->
+      <section class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-gray-800 mb-4">Chọn chức năng</h2>
+
+        <div
+          id="accordion-exercises"
+          data-accordion="open"
+          data-active-classes="bg-blue-50 text-blue-700"
+          data-inactive-classes="text-gray-600"
+        >
+          <!-- Bài 1 -->
+          <h3 id="heading-1">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 rounded-t-lg hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-1"
+              aria-expanded="false"
+              aria-controls="body-1"
+            >
+              <span>1. Tổng các số dương trong mảng</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-1" class="hidden" aria-labelledby="heading-1">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="sumPositiveNumbers()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Tính tổng
+              </button>
+              <p id="result1" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 2 -->
+          <h3 id="heading-2">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-2"
+              aria-expanded="false"
+              aria-controls="body-2"
+            >
+              <span>2. Đếm có bao nhiêu số dương trong mảng</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-2" class="hidden" aria-labelledby="heading-2">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="countPositiveNumbers()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Đếm số dương
+              </button>
+              <p id="result2" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 3 -->
+          <h3 id="heading-3">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-3"
+              aria-expanded="false"
+              aria-controls="body-3"
+            >
+              <span>3. Tìm số nhỏ nhất trong mảng</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-3" class="hidden" aria-labelledby="heading-3">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="findMinNumber()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Tìm số nhỏ nhất
+              </button>
+              <p id="result3" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 4 -->
+          <h3 id="heading-4">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-4"
+              aria-expanded="false"
+              aria-controls="body-4"
+            >
+              <span>4. Tìm số dương nhỏ nhất trong mảng</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-4" class="hidden" aria-labelledby="heading-4">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="findMinPositiveNumber()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Tìm số dương nhỏ nhất
+              </button>
+              <p id="result4" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 5 -->
+          <h3 id="heading-5">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-5"
+              aria-expanded="false"
+              aria-controls="body-5"
+            >
+              <span
+                >5. Tìm số chẵn cuối cùng trong mảng (không có trả về -1)</span
+              >
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-5" class="hidden" aria-labelledby="heading-5">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="findLastEvenNumber()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Tìm số chẵn cuối cùng
+              </button>
+              <p id="result5" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 6 -->
+          <h3 id="heading-6">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-6"
+              aria-expanded="false"
+              aria-controls="body-6"
+            >
+              <span>6. Đổi chỗ 2 giá trị trong mảng theo vị trí</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-6" class="hidden" aria-labelledby="heading-6">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
+                <input
+                  type="number"
+                  id="inputPosition1"
+                  placeholder="Nhập vị trí 1"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                />
+                <input
+                  type="number"
+                  id="inputPosition2"
+                  placeholder="Nhập vị trí 2"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                />
+              </div>
+              <button
+                onclick="swapPositions()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Đổi chỗ
+              </button>
+              <p id="result6" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 7 -->
+          <h3 id="heading-7">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-7"
+              aria-expanded="false"
+              aria-controls="body-7"
+            >
+              <span>7. Sắp xếp mảng theo thứ tự tăng dần</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-7" class="hidden" aria-labelledby="heading-7">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="sortAscending()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Sắp xếp
+              </button>
+              <p id="result7" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 8 -->
+          <h3 id="heading-8">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-8"
+              aria-expanded="false"
+              aria-controls="body-8"
+            >
+              <span
+                >8. Tìm số nguyên tố đầu tiên trong mảng (không có trả về
+                -1)</span
+              >
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-8" class="hidden" aria-labelledby="heading-8">
+            <div class="p-4 border border-b-0 border-gray-200">
+              <button
+                onclick="findFirstPrime()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Tìm số nguyên tố
+              </button>
+              <p id="result8" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 9 -->
+          <h3 id="heading-9">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-b-0 border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-9"
+              aria-expanded="false"
+              aria-controls="body-9"
+            >
+              <span>9. Nhập thêm mảng số thực, đếm có bao nhiêu số nguyên</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-9" class="hidden" aria-labelledby="heading-9">
+            <div class="p-4 border border-b-0 border-gray-200 space-y-3">
+              <div class="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="number"
+                  step="any"
+                  id="inputRealNumber"
+                  placeholder="Nhập số thực"
+                  class="flex-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5"
+                />
+                <button
+                  onclick="addRealNumber()"
+                  class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5"
+                >
+                  Thêm số
+                </button>
+              </div>
+              <div class="p-3 text-sm text-blue-800 rounded-lg bg-blue-50">
+                👉 Mảng số thực:
+                <span id="realArrayResult" class="font-semibold">[]</span>
+              </div>
+              <button
+                onclick="countIntegers()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                Đếm số nguyên
+              </button>
+              <p id="result9" class="text-gray-700">👉</p>
+            </div>
+          </div>
+
+          <!-- Bài 10 -->
+          <h3 id="heading-10">
+            <button
+              type="button"
+              class="flex items-center justify-between w-full p-4 font-medium border border-gray-200 hover:bg-gray-100 gap-3"
+              data-accordion-target="#body-10"
+              aria-expanded="false"
+              aria-controls="body-10"
+            >
+              <span>10. So sánh số lượng số dương và số âm</span>
+              <svg
+                data-accordion-icon
+                class="w-3 h-3 rotate-180 shrink-0"
+                fill="none"
+                viewBox="0 0 10 6"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5 5 1 1 5"
+                />
+              </svg>
+            </button>
+          </h3>
+          <div id="body-10" class="hidden" aria-labelledby="heading-10">
+            <div class="p-4 border border-t-0 border-gray-200 rounded-b-lg">
+              <button
+                onclick="comparePositiveNegative()"
+                class="text-white bg-green-600 hover:bg-green-700 font-medium rounded-lg text-sm px-5 py-2.5"
+              >
+                So sánh
+              </button>
+              <p id="result10" class="mt-3 text-gray-700">👉</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Flowbite JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
