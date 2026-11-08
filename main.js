@@ -227,7 +227,7 @@ function addRealNumber() {
  *
  * xử lý:
  * tạo biến kết quả gán trước sl = 0
- * chạy vòng lặp mảng: dùng hàm isInteger, nếu =true thì +1 vào biến kết quả
+ * chạy vòng lặp mảng: dùng Number.isInteger, nếu =true thì +1 vào biến kết quả
  *
  * output: biến kết quả
  */
@@ -242,4 +242,32 @@ function countIntegers() {
 }
 
 // 10. So sánh số lượng số dương và số âm
-function comparePositiveNegative() {}
+/**
+ * input mảng các số
+ *
+ * xử lý:
+ * biến số lượng số âm
+ * biến số lượng số dương
+ * chạy vòng lặp mảng:
+ * nếu mảng[i]> 0, số lượng số dương +1;
+ * nếu mảng[i]<0, số lượng số âm +1
+ * sau khi chạy vòng lặp thì dùng if else so danh số lượng số âm và số lượng số dương
+ *
+ * output: chia ba trường hợp
+ * số lượng số âm xxx = số lượng số dương yyy
+ * số lượng số âm xxx < số lượng số dương yyy
+ * số lượng số âm xxx > số lượng số dương yyy
+ */
+function comparePositiveNegative() {
+  let positiveNumber = 0;
+  let negativeNumber = 0;
+  for (let i = 0; i < numberList.length; i++) {
+    if (numberList[i] > 0) {
+      positiveNumber += 1;
+    } else if (numberList[i] < 0) {
+      negativeNumber += 1;
+    }
+  }
+  document.getElementById("result10").innerHTML =
+    `👉 Số lượng số âm: ${negativeNumber} ${negativeNumber > positiveNumber ? ">" : negativeNumber < positiveNumber ? "<" : "="} Số lượng số dương: ${positiveNumber}`;
+}
