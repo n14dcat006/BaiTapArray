@@ -146,7 +146,31 @@ function swapPositions() {
 }
 
 // 7. Sắp xếp tăng dần
-function sortAscending() {}
+/**
+ * input: mảng các số
+ *
+ * xử lý:
+ * for (i từ 0-> < mảng.length -1){
+ *      for(i từ i+1 -> <mảng.length){
+ *          nếu số phía trước lớn hơn số phía sau => đổi chỗ (như hàm swap phía trên)
+ *      }
+ * }
+ *
+ * output:
+ * mảng sau khi sắp xếp
+ */
+function sortAscending() {
+  for (let i = 0; i < numberList.length - 1; i++) {
+    for (let j = i + 1; j < numberList.length; j++) {
+      if (numberList[j] < numberList[i]) {
+        let temp = numberList[j];
+        numberList[j] = numberList[i];
+        numberList[i] = temp;
+      }
+    }
+  }
+  document.getElementById("result7").innerHTML = `👉 ${numberList}`;
+}
 
 // 8. Tìm số nguyên tố đầu tiên (không có -> -1)
 function findFirstPrime() {}
