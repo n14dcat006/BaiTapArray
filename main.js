@@ -21,10 +21,26 @@ function sumPositiveNumbers() {
 }
 
 // 2. Đếm số dương
-function countPositiveNumbers() {}
+function countPositiveNumbers() {
+  let rs = 0;
+  for (let i = 0; i < numberList.length; i++) {
+    if (numberList[i] > 0) {
+      rs += 1;
+    }
+  }
+  document.getElementById("result2").innerHTML = `👉 ${rs}`;
+}
 
 // 3. Tìm số nhỏ nhất
-function findMinNumber() {}
+function findMinNumber() {
+  let rs = numberList[0];
+  for (i = 1; i < numberList.length; i++) {
+    if (numberList[i] < rs) {
+      rs = numberList[i];
+    }
+  }
+  document.getElementById("result3").innerHTML = `👉 ${rs}`;
+}
 
 // 4. Tìm số dương nhỏ nhất
 function findMinPositiveNumber() {}
