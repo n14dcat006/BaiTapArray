@@ -10,7 +10,15 @@ function addNumber() {
 }
 
 // 1. Tổng các số dương
-function sumPositiveNumbers() {}
+function sumPositiveNumbers() {
+  let rs = 0;
+  for (let i = 0; i < numberList.length; i++) {
+    if (numberList[i] > 0) {
+      rs += numberList[i];
+    }
+  }
+  document.getElementById("result1").innerHTML = `👉 ${rs}`;
+}
 
 // 2. Đếm số dương
 function countPositiveNumbers() {}
