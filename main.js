@@ -1,5 +1,13 @@
+//Tạo biến chung số n user sẽ điền và mảng để làm đầu vào cho các hàm
+let numberN = 0;
+let numberList = [];
+
 // Thêm số vào mảng
-function addNumber() {}
+function addNumber() {
+  numberN = document.getElementById("inputNumber").value * 1;
+  numberList.push(numberN);
+  document.getElementById("arrayResult").innerHTML = numberList;
+}
 
 // 1. Tổng các số dương
 function sumPositiveNumbers() {}
