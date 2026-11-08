@@ -173,7 +173,46 @@ function sortAscending() {
 }
 
 // 8. Tìm số nguyên tố đầu tiên (không có -> -1)
-function findFirstPrime() {}
+/**
+ * input: mảng các số
+ *
+ * xử lý:
+ * số nguyên tố là số >1, chỉ chia hết cho 1 và chính nó
+ * gán biến kết quả = -1 (mặc định)
+ * chạy vòng lặp mảng {
+ *  nếu mảng[i]>i thì :
+ *      gán biến tạm giả định số này là nguyên số: temp=true
+ *      chạy for(từ j=2 -> <mảng[i]){
+ *      nếu mảng [i]%j ===0 => số này chia hết có 1 số khác 1 và chính nó
+ *      => không phải nguyên tố => gán lại biến temp=false
+ *      }
+ * nếu biến temp=true => không có nào giữa 1 và mảng[i] mà bị chia hết
+ * gán biến kết quả = mảng [i]
+ * break thoát vòng lặp for i (do chỉ cần tìm thấy số đầu tiên)
+ * }
+ *
+ * output:
+ * nếu không có số nguyên tố: -1
+ * nếu có trả biến kết quả
+ */
+function findFirstPrime() {
+  let rs = -1;
+  for (let i = 0; i < numberList.length; i++) {
+    if (numberList[i] > 1) {
+      let temp = true;
+      for (j = 2; j < numberList[i]; j++) {
+        if (numberList[i] % j === 0) {
+          temp = false;
+        }
+      }
+      if (temp == true) {
+        rs = numberList[i];
+        break;
+      }
+    }
+  }
+  document.getElementById("result8").innerHTML = `👉 ${rs}`;
+}
 
 // 9. Thêm số thực & đếm số nguyên
 function addRealNumber() {}
