@@ -215,9 +215,31 @@ function findFirstPrime() {
 }
 
 // 9. Thêm số thực & đếm số nguyên
-function addRealNumber() {}
-
-function countIntegers() {}
+let realNumber = 0;
+let realNumberList = [];
+function addRealNumber() {
+  realNumber = document.getElementById("inputRealNumber").value * 1;
+  realNumberList.push(realNumber);
+  document.getElementById("realArrayResult").innerHTML = realNumberList;
+}
+/**
+ * input: mảng số thực
+ *
+ * xử lý:
+ * tạo biến kết quả gán trước sl = 0
+ * chạy vòng lặp mảng: dùng hàm isInteger, nếu =true thì +1 vào biến kết quả
+ *
+ * output: biến kết quả
+ */
+function countIntegers() {
+  let rs = 0;
+  for (let i = 0; i < realNumberList.length; i++) {
+    if (Number.isInteger(realNumberList[i]) == true) {
+      rs += 1;
+    }
+  }
+  document.getElementById("result9").innerHTML = `👉 ${rs}`;
+}
 
 // 10. So sánh số lượng số dương và số âm
 function comparePositiveNegative() {}
